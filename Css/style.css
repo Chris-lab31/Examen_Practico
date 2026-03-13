@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+
+.carousel-caption h5,
+.carousel-caption p {
+    color: black;
+}
