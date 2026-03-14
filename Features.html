@@ -7,7 +7,7 @@
     <title>Features</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="Css/style2.css">
-    
+</head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -28,15 +28,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about_us.html">About Us</a>
                     </li>
-                
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="item Header">
 
-        </div>
+    <div class="container">
+        <div class="item header"></div>
         <div class="item content">
             <h1>Cualidades/Caracteristicas de Linux</h1>
             <br>
@@ -44,41 +42,27 @@
             <h3>Multitarea preventiva</h3>
             <p>el kernel puede interrumpir cualquier proceso en cualquier momento para cederle CPU a otro. Ningún
                 proceso puede monopolizar el sistema.</p>
-
             <h3>SMP (Symmetric Multiprocessing)</h3>
-            <p>aprovecha todos los núcleos del procesador de forma eficiente. El planificador **CFS (Completely Fair
-                Scheduler)** distribuye el tiempo de CPU de manera equitativa entre todos los procesos.</p>
-
+            <p>aprovecha todos los núcleos del procesador de forma eficiente. El planificador CFS distribuye el tiempo
+                de CPU de manera equitativa entre todos los procesos.</p>
             <h3>Módulos del kernel cargables</h3>
             <p>gracias a su arquitectura monolítica modular, los drivers y funcionalidades pueden cargarse y descargarse
-                en caliente (sin reiniciar) mediante archivos `.ko`.</p>
-
+                en caliente (sin reiniciar) mediante archivos .ko</p>
             <h3>VFS (Virtual File System)</h3>
             <p>capa de abstracción que permite soportar múltiples sistemas de archivos (ext4, btrfs, XFS, NTFS, FAT32,
                 ZFS) de forma transparente para las aplicaciones.</p>
-
             <h3>namespaces y cgroups</h3>
-            <p>base de toda la tecnología de contenedores. Los namespaces aíslan procesos (red, PID, filesystem), y
-                los cgroups limitan y monitorean el uso de recursos (CPU, RAM, I/O). Docker y Podman dependen
-                completamente de esto.</p>
-
+            <p>base de toda la tecnología de contenedores. Los namespaces aíslan procesos (red, PID, filesystem), y los
+                cgroups limitan y monitorean el uso de recursos (CPU, RAM, I/O). Docker y Podman dependen completamente
+                de esto.</p>
             <h3>eBPF (Extended Berkeley Packet Filter)</h3>
-            <p>una de las features más poderosas y modernas del kernel. Permite cargar programas pequeños y
-                verificados directamente en el kernel en tiempo de ejecución, sin modificarlo ni reiniciarlo. Se usa
-                para observabilidad, seguridad, redes y profiling de rendimiento. Herramientas como `bpftrace`,
-                Cilium y Falco lo usan extensamente.</p>
-
+            <p>una de las features más poderosas y modernas del kernel. Permite cargar programas pequeños y verificados
+                directamente en el kernel en tiempo de ejecución, sin modificarlo ni reiniciarlo.</p>
             <br>
             <h2>Features de Seguridad</h2>
-            <h3>SELinux/ AppArmor</h3>
-            <p>es un sistema de seguridad de aplicaciones que proporciona protección contra accesos no autorizados a los
-                recursos de un sistema. Es un conjunto de reglas que se aplican a cada proceso y que determinan si un
-                proceso puede acceder a un recurso determinado. Las reglas se pueden aplicar a nivel de sistema, de
-                aplicación o de usuario. Las reglas se pueden aplicar a recursos de archivos, de red, de procesos y de
-                sistema. Las reglas se pueden aplicar a nivel de sistema, de aplicación o de usuario. Las reglas se
-                pueden aplicar a recursos de archivos, de red, de procesos y de sistema. Las reglas se pueden aplicar a
-                nivel de sistema, de aplicación o de usuario.</p>
-
+            <h3>SELinux / AppArmor</h3>
+            <p>sistema de seguridad que proporciona protección contra accesos no autorizados a los recursos del sistema
+                mediante reglas aplicadas a cada proceso.</p>
             <h3>Seccomp</h3>
             <p>filtra las llamadas al sistema disponibles para cada proceso. Docker lo usa para reducir la superficie de
                 ataque de los contenedores.</p>
@@ -86,81 +70,59 @@
             <p>divide los privilegios del superusuario en unidades más pequeñas y manejables, evitando que un proceso
                 tenga más privilegios de los estrictamente necesarios.</p>
             <h3>Lockdown Mode</h3>
-            <p>características como el modo lockdown representan victorias importantes en la seguridad de
-                infraestructura crítica [TuxCare](https://tuxcare.com/blog/linux-evolution/) . Restringe incluso al
-                usuario root para que no pueda comprometer la integridad del kernel en ejecución.</p>
+            <p>restringe incluso al usuario root para que no pueda comprometer la integridad del kernel en ejecución.
+            </p>
             <h3>Kernel Address Space Layout Randomization (KASLR)</h3>
             <p>randomiza las direcciones de memoria del kernel en cada arranque, dificultando la explotación de
                 vulnerabilidades.</p>
             <h3>Guard pages</h3>
-            <p>una feature reciente agrega páginas de guardia (páginas sin acceso) alrededor de los stacks del kernel
-                para prevenir ataques de desbordamiento de pila. [IBM](https://www.ibm.com/think/topics/linux)</p>
+            <p>agrega páginas de guardia alrededor de los stacks del kernel para prevenir ataques de desbordamiento de
+                pila.</p>
             <h3>ARM MTE (Memory Tagging Extension)</h3>
-            <p>la arquitectura ARM recibe un impulso significativo con MTE, que detecta vulnerabilidades de corrupción
-                de memoria como overflow y use-after-free. [IBM](https://www.ibm.com/think/topics/linux)</p>
+            <p>detecta vulnerabilidades de corrupción de memoria como overflow y use-after-free.</p>
             <br>
             <h2>Rust en el Kernel</h2>
-            <p>Desde la versión 6.1, Linux comenzó a integrar código en **Rust** como segundo lenguaje oficial del
-                kernel, junto a C. Rust no elimina vulnerabilidades por completo, pero su diseño con seguridad de
-                memoria reduce drásticamente la exposición a problemas como buffer overflows.
-                [TuxCare](https://tuxcare.com/blog/linux-evolution/)
-
-                En 2024 también se experimentó con un planificador de Linux escrito en Rust, mostrando resultados
-                prometedores para el rendimiento en gaming.
-                [ADSLZone](https://www.adslzone.net/reportajes/software/que-es-linux/)</p>
+            <p>Desde la versión 6.1, Linux comenzó a integrar código en Rust como segundo lenguaje oficial del kernel,
+                junto a C. En 2024 también se experimentó con un planificador de Linux escrito en Rust, mostrando
+                resultados prometedores para el rendimiento en gaming.</p>
             <br>
             <h2>Features de Rendimiento y Energia</h2>
             <h3>PREEMPT_RT (Real-Time Linux)</h3>
-            <p>el patchset PREEMPT_RT, que agrega capacidades de tiempo real con latencias sub-milisegundo, está siendo
-                integrado al kernel mainline, lo que hace de Linux una opción top para robots industriales y vehículos
-                autónomos. [Red Hat](https://www.redhat.com/en/topics/linux)</p>
+            <p>agrega capacidades de tiempo real con latencias sub-milisegundo, ideal para robots industriales y
+                vehículos autónomos.</p>
             <h3>Gestión dinámica de energía</h3>
             <p>features como Intel Speed Select y AMD P-state permiten al kernel ajustar la frecuencia y voltaje de la
-                CPU en tiempo real. Gobernadores con IA como `schedutil` usan machine learning para predecir cargas de
-                trabajo y optimizar el consumo. [Red Hat](https://www.redhat.com/en/topics/linux)</p>
+                CPU en tiempo real.</p>
             <h3>io_uring</h3>
-            <p>interfaz de I/O asíncrona de alto rendimiento introducida en Linux 5.1. Reduce drasticamente el overhead
-                de las llamadas al sistema para operaciones de disco y red. Fundamental para servidores y bases de datos
-                modernos.</p>
+            <p>interfaz de I/O asíncrona de alto rendimiento introducida en Linux 5.1. Fundamental para servidores y
+                bases de datos modernos.</p>
             <br>
             <h2>Features de Sistema de Archivos</h2>
             <h3>Bcachefs</h3>
-            <p>un nuevo sistema de archivos COW (Copy-on-Write) que enfatiza la confiabilidad y robustez, con suma de
-                verificación completa de datos y metadatos, replicación, compresión, cifrado e instantáneas.
-                [ArrobaSolutions](https://www.arrobasolutions.com/30-anos-linux-detalles-exito/) Fue fusionado
-                oficialmente en Linux 6.7.</p>
+            <p>sistema de archivos COW con suma de verificación, replicación, compresión, cifrado e instantáneas.
+                Fusionado oficialmente en Linux 6.7.</p>
             <h3>Btrfs con RAID tree</h3>
-            <p>Btrfs incorporó en Linux 6.7 el árbol de bandas RAID y mejoras de rendimiento en operaciones como el
-                borrado. [ArrobaSolutions](https://www.arrobasolutions.com/30-anos-linux-detalles-exito/)</p>
+            <p>Btrfs incorporó en Linux 6.7 el árbol de bandas RAID y mejoras de rendimiento en operaciones de borrado.
+            </p>
             <br>
             <h2>Features de Red y Virtualización</h2>
             <h3>Netfilter / nftables</h3>
-            <p>framework de firewall integrado en el kernel. `nftables` reemplaza a `iptables` con una sintaxis más
-                limpia y mejor rendimiento.</p>
+            <p>framework de firewall integrado en el kernel. nftables reemplaza a iptables con mejor rendimiento.</p>
             <h3>KVM (Kernel-based Virtual Machine)</h3>
             <p>hipervisor integrado directamente en el kernel. Base de AWS, GCP y Azure para virtualizar millones de
-                instancias. Linux 6.12 LTS incorporó optimizaciones de rendimiento en entornos virtualizados, haciéndolo
-                ideal para nubes privadas y públicas.
-                [MuyLinux](https://www.muylinux.com/2024/01/12/deseos-escritorio-linux-2024/)</p>
+                instancias.</p>
             <h3>SR-IOV</h3>
-            <p>permite que una sola tarjeta de red física se presente como múltiples interfaces virtuales independientes
-                al kernel, fundamental para datacenter y virtualización de red. [Red
-                Hat](https://www.redhat.com/en/topics/linux)</p>
+            <p>permite que una sola tarjeta de red física se presente como múltiples interfaces virtuales, fundamental
+                para datacenter.</p>
             <br>
             <h2>Features para el Escritorio y Gaming</h2>
             <h3>Wayland</h3>
-            <p>protocolo gráfico moderno que reemplaza X11. Canonical tomó la decisión de hacer que Ubuntu use Wayland
-                por defecto incluso en GPUs NVIDIA, habiendo anteriormente hecho fallback a Xorg/X11 por los problemas
-                históricos de NVIDIA con Wayland.
-                [Timetoast](https://www.timetoast.com/timelines/la-historia-de-linux-eb4c906e-c130-4665-8e59-efd23d4f7739)
-            </p>
+            <p>protocolo gráfico moderno que reemplaza X11. Ubuntu lo usa por defecto incluso en GPUs NVIDIA.</p>
             <h3>Soporte RISC-V mejorado</h3>
-            <p>con chips RISC-V más nuevos y rápidos emergiendo, y el soporte del kernel Linux para RISC-V mejorando
-                rápidamente, esta arquitectura abierta gana terreno en IoT, embebido y servidores.
-                [Timetoast](https://www.timetoast.com/timelines/la-historia-de-linux-eb4c906e-c130-4665-8e59-efd23d4f7739)
-            </p>
+            <p>con chips RISC-V más nuevos emergiendo, esta arquitectura abierta gana terreno en IoT, embebido y
+                servidores.</p>
         </div>
-        <div class="item Footer"></div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
